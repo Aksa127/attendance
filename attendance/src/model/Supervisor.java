@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class Supervisor {
@@ -20,8 +21,8 @@ public class Supervisor {
         | Supervisor |-------------| Attendance |
         +------------+             +------------+  */
 	
-	HashMap<Integer, Employee> employeeMap = new HashMap<Integer, Employee>();
-	HashMap<Integer, Attendance> attendanceMap = new HashMap<Integer, Attendance>();
+	private HashMap<String, Employee> employeeMap = new HashMap<>();
+	private HashMap<String, Attendance> attendanceMap = new HashMap<>();
 
 	public Supervisor(String supervisorID, String supervisorName, ArrayList<Employee> employeeList,
 			ArrayList<Attendance> attendanceList) {
@@ -42,8 +43,10 @@ public class Supervisor {
 			throw new NullPointerException("List can't be empty");
 		}
 		
-		while (employeeList.iterator().hasNext()) {
-			employeeMap.put(employeeList.get, employeeList.get);
+		Iterator<Employee> iterator = employeeList.iterator();
+		
+		while (iterator.hasNext()) {
+			employeeMap.put(iterator.next().getEmployeeID(), iterator.next());
 		}
 		
 		this.employeeList = new ArrayList<Employee>(employeeList);
@@ -51,6 +54,7 @@ public class Supervisor {
 	
 	public void addEmployee(Employee employee) {
 		this.employeeList.add(employee);
+		
 	}
 	
 	public void addAllEmployee(Collection<Employee> employee) {
@@ -98,15 +102,15 @@ public class Supervisor {
 	}
 	
 //	Methods
-	public boolean verifyAttendance(boolean attendanceFlag, String employeeID, String supervisorID) {
-		boolean flag = false;
-
-		 	
-		
-		if (attendanceFlag == true && ) {
-			
-		}
-		
-		return flag;
-	}
+//	public boolean verifyAttendance(boolean attendanceFlag, String employeeID, String supervisorID) {
+//		boolean flag = false;
+//
+//		 	
+//		
+//		if ((attendanceFlag == true) && (attendanceMap.get(employee) )) {
+//			
+//		}
+//		
+//		return flag;
+//	}
 }
