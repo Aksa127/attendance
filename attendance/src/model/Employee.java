@@ -11,9 +11,19 @@ public class Employee {
 	private Double monthlySalary;
 	
 	private Supervisor supervisor;
-	private ArrayList<Attendance> attendanceList;
-	private ArrayList<Salary> salaryList;
+	/*  +----------+ 1..*       1 +------------+
+        | Employee |--------------| Supervisor |
+        +----------+              +------------+  */
 	
+	private ArrayList<Attendance> attendanceList;
+	/*  +----------+ 1       1..* +------------+
+        | Employee |--------------| Attendance |
+        +----------+              +------------+  */
+	
+	private ArrayList<Salary> salaryList;
+	/*  +----------+ 1       1..* +--------+
+        | Employee |--------------| Salary |
+        +----------+              +--------+  */
 	
 
 	public Employee(String employeeID, String employeeName, String employeeType, String employeeGender,
@@ -31,6 +41,7 @@ public class Employee {
 		this.salaryList = salaryList;
 	}
 	
+//	attendanceList
 	public ArrayList<Attendance> getAttendanceList() {
 		return attendanceList;
 	}
@@ -39,6 +50,7 @@ public class Employee {
 		this.attendanceList = attendanceList;
 	}
 
+//	salaryList
 	public ArrayList<Salary> getSalaryList() {
 		return salaryList;
 	}
@@ -47,6 +59,7 @@ public class Employee {
 		this.salaryList = salaryList;
 	}
 
+//	employeeID
 	public String getEmployeeID() {
 		return employeeID;
 	}
@@ -55,6 +68,7 @@ public class Employee {
 		this.employeeID = employeeID;
 	}
 
+//	employeeName
 	public String getEmployeeName() {
 		return employeeName;
 	}
@@ -63,6 +77,7 @@ public class Employee {
 		this.employeeName = employeeName;
 	}
 
+//	employeeType
 	public String getEmployeeType() {
 		return employeeType;
 	}
@@ -71,6 +86,7 @@ public class Employee {
 		this.employeeType = employeeType;
 	}
 
+//	employeeGender
 	public String getEmployeeGender() {
 		return employeeGender;
 	}
@@ -79,6 +95,7 @@ public class Employee {
 		this.employeeGender = employeeGender;
 	}
 
+//	hourlyRate
 	public Double getHourlyRate() {
 		return hourlyRate;
 	}
@@ -87,6 +104,7 @@ public class Employee {
 		this.hourlyRate = hourlyRate;
 	}
 
+//	monthlySalary
 	public Double getMonthlySalary() {
 		return monthlySalary;
 	}
@@ -95,6 +113,7 @@ public class Employee {
 		this.monthlySalary = monthlySalary;
 	}
 
+//	supervisor
 	public Supervisor getSupervisor() {
 		return supervisor;
 	}
@@ -102,5 +121,8 @@ public class Employee {
 	public void setSupervisor(Supervisor supervisor) {
 		this.supervisor = supervisor;
 	}	
+	
+//	Methods
+	
 	
 }

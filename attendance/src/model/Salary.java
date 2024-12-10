@@ -12,10 +12,17 @@ public class Salary {
 	private double finalSalary;
 	
 	private Employee employee;
-	private ArrayList<Attendance> attendance;
+	/*  +--------+ 1..*       1 +----------+
+        | Salary |--------------| Employee |
+        +--------+              +----------+  */
+	
+	private ArrayList<Attendance> attendanceList;
+	/*  +--------+ 1       1..* +------------+
+        | Salary |--------------| Attendance |
+        +--------+              +------------+  */
 	
 	public Salary(String salaryID, Date month, Date totalHours, Date overtimeHours, double deductions,
-			double finalSalary, Employee employee, ArrayList<Attendance> attendance) {
+			double finalSalary, Employee employee, ArrayList<Attendance> attendanceList) {
 		super();
 		this.salaryID = salaryID;
 		this.month = month;
@@ -24,9 +31,10 @@ public class Salary {
 		this.deductions = deductions;
 		this.finalSalary = finalSalary;
 		this.employee = employee;
-		this.attendance = attendance;
+		this.attendanceList = attendanceList;
 	}
 
+//	salaryID
 	public String getSalaryID() {
 		return salaryID;
 	}
@@ -34,7 +42,8 @@ public class Salary {
 	public void setSalaryID(String salaryID) {
 		this.salaryID = salaryID;
 	}
-
+	
+//	month
 	public Date getMonth() {
 		return month;
 	}
@@ -42,7 +51,8 @@ public class Salary {
 	public void setMonth(Date month) {
 		this.month = month;
 	}
-
+	
+//	totalHours
 	public Date getTotalHours() {
 		return totalHours;
 	}
@@ -51,6 +61,7 @@ public class Salary {
 		this.totalHours = totalHours;
 	}
 
+//	overtimeHours
 	public Date getOvertimeHours() {
 		return overtimeHours;
 	}
@@ -59,6 +70,7 @@ public class Salary {
 		this.overtimeHours = overtimeHours;
 	}
 
+//	deductions
 	public double getDeductions() {
 		return deductions;
 	}
@@ -67,6 +79,7 @@ public class Salary {
 		this.deductions = deductions;
 	}
 
+//	finalSalary
 	public double getFinalSalary() {
 		return finalSalary;
 	}
@@ -75,6 +88,7 @@ public class Salary {
 		this.finalSalary = finalSalary;
 	}
 
+//	employee
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -83,11 +97,14 @@ public class Salary {
 		this.employee = employee;
 	}
 
+//	attendanceList
 	public ArrayList<Attendance> getAttendance() {
-		return attendance;
+		return attendanceList;
 	}
 
-	public void setAttendance(ArrayList<Attendance> attendance) {
-		this.attendance = attendance;
+	public void setAttendance(ArrayList<Attendance> attendanceList) {
+		this.attendanceList = attendanceList;
 	}
+	
+//	Methods
 }

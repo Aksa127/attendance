@@ -82,7 +82,6 @@ public class Supervisor {
 		this.attendanceList.addAll(attendance);
 	}
 	
-
 //	supervisorID
 	public String getSupervisorID() {
 		return supervisorID;
@@ -102,15 +101,15 @@ public class Supervisor {
 	}
 	
 //	Methods
-//	public boolean verifyAttendance(boolean attendanceFlag, String employeeID, String supervisorID) {
-//		boolean flag = false;
-//
-//		 	
-//		
-//		if ((attendanceFlag == true) && (attendanceMap.get(employee) )) {
-//			
-//		}
-//		
-//		return flag;
-//	}
+	public boolean verifyAttendance(boolean attendanceFlag, String employeeID, String supervisorID) {
+		boolean flag = false;
+
+		 	
+		
+		if ((attendanceFlag == true) && (attendanceMap.get(employee) )) {
+			
+		}
+		
+		return flag;
+	}
 }
