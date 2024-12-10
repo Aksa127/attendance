@@ -10,19 +10,19 @@ import java.util.List;
 public class Supervisor {
 	private String supervisorID;
 	private String supervisorName;
+	private boolean verified;
 	
 	private ArrayList<Employee> employeeList;
+	private HashMap<String, Employee> employeeMap = new HashMap<>();
 	/*  +------------+ 1      1..* +----------+
         | Supervisor |-------------| Employee |
         +------------+              +----------+  */
 	
 	private ArrayList<Attendance> attendanceList;
+	private HashMap<String, Attendance> attendanceMap = new HashMap<>();
 	/*  +------------+ 1      1..* +------------+
         | Supervisor |-------------| Attendance |
         +------------+             +------------+  */
-	
-	private HashMap<String, Employee> employeeMap = new HashMap<>();
-	private HashMap<String, Attendance> attendanceMap = new HashMap<>();
 
 	public Supervisor(String supervisorID, String supervisorName, ArrayList<Employee> employeeList,
 			ArrayList<Attendance> attendanceList) {
@@ -44,7 +44,6 @@ public class Supervisor {
 		}
 		
 		Iterator<Employee> iterator = employeeList.iterator();
-		
 		while (iterator.hasNext()) {
 			employeeMap.put(iterator.next().getEmployeeID(), iterator.next());
 		}
@@ -54,11 +53,16 @@ public class Supervisor {
 	
 	public void addEmployee(Employee employee) {
 		this.employeeList.add(employee);
-		
+		employeeMap.put(employee.getEmployeeID(), employee);
 	}
 	
-	public void addAllEmployee(Collection<Employee> employee) {
-		this.employeeList.addAll(employee);
+	public void addAllEmployee(Collection<Employee> employees) {
+		this.employeeList.addAll(employees);
+		
+		Iterator<Employee> iterator = employees.iterator();
+		while (iterator.hasNext()) {
+			employeeMap.put(iterator.next().getEmployeeID(), iterator.next());
+		}
 	}
 	
 //	Attendance getter, setter and adder
@@ -71,15 +75,26 @@ public class Supervisor {
 			throw new NullPointerException("List can't be empty");
 		}
 		
+		Iterator<Attendance> iterator = attendanceList.iterator();
+		while (iterator.hasNext()) {
+			attendanceMap.put(iterator.next().getAttendanceID(), iterator.next());
+		}
+		
 		this.attendanceList = new ArrayList<Attendance>(attendanceList);
 	}
 	
 	public void addAttendance(Attendance attendance) {
 		this.attendanceList.add(attendance);
+		employeeMap.put(attendance.getAttendanceID(), attendance);
 	}
 	
-	public void addAllAttendance(Collection<Attendance> attendance) {
-		this.attendanceList.addAll(attendance);
+	public void addAllAttendance(Collection<Attendance> attendances) {
+		this.attendanceList.addAll(attendances);
+		
+		Iterator<Attendance> iterator = attendanceList.iterator();
+		while (iterator.hasNext()) {
+			attendanceMap.put(iterator.next().getAttendanceID(), iterator.next());
+		}
 	}
 	
 //	supervisorID
@@ -102,14 +117,13 @@ public class Supervisor {
 	
 //	Methods
 	public boolean verifyAttendance(boolean attendanceFlag, String employeeID, String supervisorID) {
-		boolean flag = false;
-
-		 	
+		verified = false;
 		
-		if ((attendanceFlag == true) && (attendanceMap.get(employee) )) {
-			
+		if ((attendanceFlag == true) && (employeeMap.get(employeeID).getSupervisor().supervisorID == supervisorID)) {
+			verified = attendanceFlag;
+			return verified;
 		}
 		
-		return flag;
+		return verified;
 	}
 }

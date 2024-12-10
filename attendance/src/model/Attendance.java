@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.HashMap;
 
 public class Attendance {
 	private String attendanceID;

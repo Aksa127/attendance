@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Employee {
 	private String employeeID;
@@ -24,7 +25,6 @@ public class Employee {
 	/*  +----------+ 1       1..* +--------+
         | Employee |--------------| Salary |
         +----------+              +--------+  */
-	
 
 	public Employee(String employeeID, String employeeName, String employeeType, String employeeGender,
 			Double hourlyRate, Double monthlySalary, Supervisor supervisor, ArrayList<Attendance> attendanceList,
@@ -120,7 +120,7 @@ public class Employee {
 
 	public void setSupervisor(Supervisor supervisor) {
 		this.supervisor = supervisor;
-	}	
+	}
 	
 //	Methods
 	
