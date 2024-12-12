@@ -8,8 +8,6 @@ public class Employee {
 	private String employeeName;
 	private String employeeType;
 	private String employeeGender;
-	private Double hourlyRate;
-	private Double monthlySalary;
 	
 	private Supervisor supervisor;
 	/*  +----------+ 1..*       1 +------------+
@@ -26,16 +24,13 @@ public class Employee {
         | Employee |--------------| Salary |
         +----------+              +--------+  */
 
-	public Employee(String employeeID, String employeeName, String employeeType, String employeeGender,
-			Double hourlyRate, Double monthlySalary, Supervisor supervisor, ArrayList<Attendance> attendanceList,
+	public Employee(String employeeID, String employeeName, String employeeType, String employeeGender, Supervisor supervisor, ArrayList<Attendance> attendanceList,
 			ArrayList<Salary> salaryList) {
 		super();
 		this.employeeID = employeeID;
 		this.employeeName = employeeName;
 		this.employeeType = employeeType;
 		this.employeeGender = employeeGender;
-		this.hourlyRate = hourlyRate;
-		this.monthlySalary = monthlySalary;
 		this.supervisor = supervisor;
 		this.attendanceList = attendanceList;
 		this.salaryList = salaryList;
@@ -93,24 +88,6 @@ public class Employee {
 
 	public void setEmployeeGender(String employeeGender) {
 		this.employeeGender = employeeGender;
-	}
-
-//	hourlyRate
-	public Double getHourlyRate() {
-		return hourlyRate;
-	}
-
-	public void setHourlyRate(Double hourlyRate) {
-		this.hourlyRate = hourlyRate;
-	}
-
-//	monthlySalary
-	public Double getMonthlySalary() {
-		return monthlySalary;
-	}
-
-	public void setMonthlySalary(Double monthlySalary) {
-		this.monthlySalary = monthlySalary;
 	}
 
 //	supervisor

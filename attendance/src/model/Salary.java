@@ -107,4 +107,8 @@ public class Salary {
 	}
 	
 //	Methods
+	public void calculateSalary() {
+		
+
+	}
 }

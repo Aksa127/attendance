@@ -33,7 +33,7 @@ public class Supervisor {
 		this.attendanceList = attendanceList;
 	}
 
-//	Employee getter, setter and adder
+//	Employee getter, setter, deleter, and updater and adder
 	public List<Employee> getEmployee() {
 		return Collections.unmodifiableList(employeeList);
 	}
@@ -49,6 +49,22 @@ public class Supervisor {
 		}
 		
 		this.employeeList = new ArrayList<Employee>(employeeList);
+	}
+	
+	public void deleteEmployee(String employeeID) {
+		employeeList.remove(employeeMap.get(employeeID));
+		employeeMap.remove(employeeID);
+	}
+	
+	public void deleteEmployeeList() {
+		employeeList.clear();
+		employeeMap.clear();
+	}
+	
+	public void updateEmployee(String oldEmployeeID, Employee newEmployee) {
+		employeeList.set(employeeList.indexOf(employeeMap.get(oldEmployeeID)), newEmployee);
+		employeeMap.remove(oldEmployeeID);
+		employeeMap.put(newEmployee.getEmployeeID(), newEmployee);
 	}
 	
 	public void addEmployee(Employee employee) {
@@ -85,7 +101,7 @@ public class Supervisor {
 	
 	public void addAttendance(Attendance attendance) {
 		this.attendanceList.add(attendance);
-		employeeMap.put(attendance.getAttendanceID(), attendance);
+		attendanceMap.put(attendance.getAttendanceID(), attendance);
 	}
 	
 	public void addAllAttendance(Collection<Attendance> attendances) {
