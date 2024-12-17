@@ -25,15 +25,19 @@ public class Attendance {
         | Attendance |--------------| Employee |
         +------------+              +----------+  */
 	
-	public Attendance(String attendanceID, Date clockInTime, Date clockOutTime, Date date, String attendanceStatus) {
+	public Attendance(String attendanceID, Date clockInTime, Date clockOutTime, Date date, String attendanceStatus,
+			Supervisor supervisor, Salary salary, Employee employee) {
 		super();
 		this.attendanceID = attendanceID;
-		this.ClockInTime = clockInTime;
-		this.ClockOutTime = clockOutTime;
+		ClockInTime = clockInTime;
+		ClockOutTime = clockOutTime;
 		this.date = date;
 		this.attendanceStatus = attendanceStatus;
+		this.supervisor = supervisor;
+		this.salary = salary;
+		this.employee = employee;
 	}
-
+	
 //	attendanceID
 	public String getAttendanceID() {
 		return attendanceID;

@@ -3,6 +3,7 @@ package main;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.Supervisor;
+import view.Login;
 
 public class Main extends Application {
 
@@ -13,8 +14,12 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
+		Login loginPage  = new Login(primaryStage);
 		
+		primaryStage.setTitle("Clocky");
+		primaryStage.setScene(loginPage.getScene());
+		primaryStage.show();
 	}
-
+		
 }
+
