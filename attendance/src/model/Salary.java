@@ -1,7 +1,12 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class Salary {
 	private String salaryID;
@@ -17,6 +22,7 @@ public class Salary {
         +--------+              +----------+  */
 	
 	private ArrayList<Attendance> attendanceList;
+	private HashMap<String, Attendance> attendanceMap = new HashMap<String, Attendance>();
 	/*  +--------+ 1       1..* +------------+
         | Salary |--------------| Attendance |
         +--------+              +------------+  */
@@ -97,13 +103,36 @@ public class Salary {
 		this.employee = employee;
 	}
 
-//	attendanceList
-	public ArrayList<Attendance> getAttendance() {
-		return attendanceList;
+//	Attendance getter, setter, deleter and adder
+	public List<Attendance> getAttendance() {
+		return Collections.unmodifiableList(attendanceList);
 	}
-
-	public void setAttendance(ArrayList<Attendance> attendanceList) {
-		this.attendanceList = attendanceList;
+	
+	public void setAttendance(Collection<Attendance> attendanceList) {
+		if (attendanceList == null) {
+			throw new NullPointerException("List can't be empty");
+		}
+		
+		Iterator<Attendance> iterator = attendanceList.iterator();
+		while (iterator.hasNext()) {
+			attendanceMap.put(iterator.next().getAttendanceID(), iterator.next());
+		}
+		
+		this.attendanceList = new ArrayList<Attendance>(attendanceList);
+	}
+	
+	public void addAttendance(Attendance attendance) {
+		this.attendanceList.add(attendance);
+		attendanceMap.put(attendance.getAttendanceID(), attendance);
+	}
+	
+	public void addAllAttendance(Collection<Attendance> attendances) {
+		this.attendanceList.addAll(attendances);
+		
+		Iterator<Attendance> iterator = attendanceList.iterator();
+		while (iterator.hasNext()) {
+			attendanceMap.put(iterator.next().getAttendanceID(), iterator.next());
+		}
 	}
 	
 //	Methods

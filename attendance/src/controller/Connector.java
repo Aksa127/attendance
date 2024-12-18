@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Connector {
-	private final String USERNAME = ""; // default is "root"
+	private final String USERNAME = "root"; // default is "root"
 	private final String PASSWORD = ""; // default is ""
-	private final String HOST = ""; // default is localhost:3306; port number may vary
-	private final String DATABASE = ""; // name of database
+	private final String HOST = "3306"; // default is localhost:3306; port number may vary
+	private final String DATABASE = "clocky"; // name of database
 	private final String CONNECTION = String.format("jdbc:mysql://%s/%s", HOST, DATABASE);
 	
 	private static Connector instance = null;
